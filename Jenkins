@@ -35,7 +35,7 @@ sh 'sudo docker login --username=neranji --password=Kgnn@2281'
 
 
 stage ('docker push')
-sh 'sudo docker push neranji/introspect-app1:1.0.0 .'
+sh 'sudo docker push neranji/introspect-app1:1.0.0'
 
 
 

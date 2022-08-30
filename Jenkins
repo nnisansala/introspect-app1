@@ -18,7 +18,11 @@ stage ("compile")
 stage ("unit test")
   sh 'mvn test'
 
-
+stage ("Sonar")
+sh 'mvn sonar:sonar \
+  -Dsonar.projectKey=Introspect-App1 \
+  -Dsonar.host.url=http://3.91.38.79:9000 \
+  -Dsonar.login=61d1d8b3eef6f7e20c28a30413bc470009ed3920'
 
 stage ("package")
 sh 'mvn package'
@@ -36,11 +40,6 @@ sh 'sudo docker login --username=neranji --password=Kgnn@2281'
 
 stage ('docker push')
 sh 'sudo docker push neranji/introspect-app1:1.0.0'
-
-
-
-stage ('Get K8s Nodes')
-sh 'sudo kubectl get nodes'
 
 
 }

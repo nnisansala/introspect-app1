@@ -1,0 +1,46 @@
+node {
+
+environment {
+            serviceName = 'introspect-app1'
+            releaseVersion = '1.0.0'
+        }
+
+stage ("git clone")
+ git url:'https://github.com/nnisansala/introspect-app1.git', branch: "main"
+
+
+
+stage ("compile")
+ sh 'mvn compile'
+
+
+
+stage ("unit test")
+  sh 'mvn test'
+
+
+
+stage ("package")
+sh 'mvn package'
+
+
+
+stage ("build image")
+sh 'sudo docker build -t neranji/${serviceName}:${releaseVersion} .'
+
+
+stage ('docker login')
+sh 'sudo docker login --username=neranji --password=Kgnn@2281'
+
+
+
+stage ('docker push')
+sh 'sudo docker push neranji/${serviceName}:${releaseVersion} .'
+
+
+
+stage ('Get K8s Nodes')
+sh 'sudo kubectl get nodes'
+
+
+}

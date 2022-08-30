@@ -26,7 +26,7 @@ sh 'mvn package'
 
 
 stage ("build image")
-sh 'sudo docker build -t neranji/${serviceName}:${releaseVersion} .'
+sh 'sudo docker build -t neranji/introspect-app1:1.0.0 .'
 
 
 stage ('docker login')
@@ -35,7 +35,7 @@ sh 'sudo docker login --username=neranji --password=Kgnn@2281'
 
 
 stage ('docker push')
-sh 'sudo docker push neranji/${serviceName}:${releaseVersion} .'
+sh 'sudo docker push neranji/introspect-app1:1.0.0 .'
 
 
 

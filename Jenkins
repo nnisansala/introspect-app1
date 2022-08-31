@@ -21,8 +21,10 @@ stage ("unit test")
 stage ("Sonar")
 sh 'mvn sonar:sonar \
   -Dsonar.projectKey=Introspect-App1 \
-  -Dsonar.host.url=http://3.91.38.79:9000 \
+  -Dsonar.host.url=http://34.228.199.101:9000 \
   -Dsonar.login=61d1d8b3eef6f7e20c28a30413bc470009ed3920'
+  
+
 
 stage ("package")
 sh 'mvn package'

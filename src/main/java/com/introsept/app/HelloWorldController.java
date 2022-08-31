@@ -33,7 +33,7 @@ public class HelloWorldController {
     public ResponseEntity<Object> helloFromHost() {
         try {
             InetAddress inetAddress = InetAddress.getLocalHost();
-            return new ResponseEntity<>("Hello From " + inetAddress.getHostName(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Hello From " + inetAddress.getHostName(), HttpStatus.OK);
         } catch (UnknownHostException e) {
             return new ResponseEntity<>("", HttpStatus.INTERNAL_SERVER_ERROR);
         }
